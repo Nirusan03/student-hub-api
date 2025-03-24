@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StudentHubApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StudentHubApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StudentHubApiApplication.class, args);
+    }
 
 }

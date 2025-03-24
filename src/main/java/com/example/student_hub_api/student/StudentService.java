@@ -3,8 +3,6 @@ package com.example.student_hub_api.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,21 +21,22 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudent(){
+    public List<Student> getStudent() {
         return studentRepository.findAll();
     }
-    public void addNewStudent(Student student){
+
+    public void addNewStudent(Student student) {
         Optional<Student> studentByEmail = studentRepository.findStudentByEmail(student.getEmail());
-        if (studentByEmail.isPresent()){
+        if (studentByEmail.isPresent()) {
             throw new IllegalStateException("Email Taken");
         }
         studentRepository.save(student);
     }
 
-    public void deleteStudent(long studentId){
+    public void deleteStudent(long studentId) {
         boolean exists = studentRepository.existsById(studentId);
-        if (!exists){
-            throw new IllegalStateException("Student with id " + studentId+ " does not exists" );
+        if (!exists) {
+            throw new IllegalStateException("Student with id " + studentId + " does not exists");
         }
         studentRepository.deleteById(studentId);
     }
