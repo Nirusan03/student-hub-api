@@ -13,10 +13,14 @@ public class StudentController {
 
     private final StudentService studentService;
 
+    // Added dependency injection
+    // So the spring boot itself will create the bean of service class
+    // But for that, the service class should be annotated with injection (any annotation)
     @Autowired
     public StudentController (StudentService studentService){
         this.studentService = studentService;
     }
+
     @GetMapping
     public List<Student> getStudents(){
         return studentService.getStudent();
